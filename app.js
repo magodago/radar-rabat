@@ -65,7 +65,7 @@ function render(){
     const gs = (r.generos_es||[]).slice(0,3).map(g=>`<span>${esc(g)}</span>`).join('');
     return `<article class="row" data-i="${rows.indexOf(r)}">
       <div class="dt"><b>${f.d}</b>${f.m}</div>
-      <div class="nm">${esc(r.nombre)}</div>
+      <div class="nm">${esc(r.nombre)}${r.estado==='confirmado'?'':'<em class="pend">fecha por confirmar</em>'}</div>
       <div class="loc"><b>${esc(r.municipio||'—')}</b> · ${esc(r.provincia||'')}</div>
       <div class="gg">${gs}</div>
       <div class="enc ${r.encaje}">${r.encaje==='alto'?'● ':''}${r.encaje}</div>
