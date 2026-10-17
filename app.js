@@ -7,7 +7,7 @@ const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt
 const norm = s => String(s ?? '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 
 function fmtFecha(r){
-  if (r.estado !== 'confirmado') return { d: String((r.anio||2026)+1), m: 'POR CONFIRMAR' };
+  if (r.estado !== 'confirmado') return { d: String((r.anio||2026)+1), m: '' };
   const d = new Date(r.inicio + 'T12:00:00');
   if (isNaN(d)) return { d:'--', m:'' };
   return { d: String(d.getDate()).padStart(2,'0'), m: MESES[d.getMonth()].slice(0,3).toUpperCase() + ' ' + r.anio };
@@ -70,7 +70,7 @@ function render(){
     const gs = (r.generos_es||[]).slice(0,3).map(g=>`<span>${esc(g)}</span>`).join('');
     return `<article class="row" data-i="${rows.indexOf(r)}">
       <div class="dt"><b>${f.d}</b>${f.m}</div>
-      <div class="nm">${esc(r.nombre)}${r.estado==='confirmado'?'':'<em class="pend">fecha por confirmar</em>'}</div>
+      <div class="nm">${esc(r.nombre_corto || r.nombre)}${r.estado==='confirmado'?'':'<em class="pend">fecha por confirmar</em>'}</div>
       <div class="loc"><b>${esc(r.municipio||'—')}</b> · ${esc(r.provincia||'')}</div>
       <div class="gg">${gs}</div>
       <div class="enc ${r.encaje}">${r.encaje==='alto'?'● ':''}${r.encaje}</div>
