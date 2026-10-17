@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RABAT · Radar de Festivales</title>
+<meta name="description" content="Radar diario de festivales de música en España para Rabat Music Group: fechas, promotor, lugar, contacto y encaje con el roster.">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <img src="assets/logo-rabat.svg" alt="Rabat Music Group" class="logo">
+    <span class="tag">RADAR DE FESTIVALES</span>
+  </div>
+  <div class="top-r">
+    <span class="upd" id="upd">—</span>
+    <button class="btn ghost" id="btnCsv">CSV</button>
+    <button class="btn ghost" id="btnXls">EXCEL</button>
+    <button class="btn solid" id="btnPdf">INFORME PDF</button>
+  </div>
+</header>
+
+<section class="kpis">
+  <div class="kpi"><span class="n" id="kTotal">—</span><span class="l">festivales</span></div>
+  <div class="kpi"><span class="n" id="kProv">—</span><span class="l">provincias</span></div>
+  <div class="kpi"><span class="n" id="kAlto">—</span><span class="l">encaje alto</span></div>
+  <div class="kpi"><span class="n" id="kNuevo">—</span><span class="l">nuevos 7 días</span></div>
+  <div class="kpi"><span class="n" id="kContacto">—</span><span class="l">con contacto</span></div>
+</section>
+
+<section class="filters">
+  <input id="q" type="search" placeholder="Buscar festival, municipio, promotor, artista…" autocomplete="off">
+  <select id="prov"><option value="">Toda España</option></select>
+  <select id="mes"><option value="">Todo el año</option></select>
+  <select id="ord">
+    <option value="fecha">Orden: fecha</option>
+    <option value="encaje">Orden: encaje</option>
+    <option value="nombre">Orden: nombre</option>
+  </select>
+  <label class="chk"><input type="checkbox" id="soloAlto"> Solo encaje alto</label>
+  <div class="gens" id="gens"></div>
+</section>
+
+<main>
+  <div class="list-head">
+    <span id="count">—</span>
+    <span class="hintx">Pulsa una fila para ver la ficha completa</span>
+  </div>
+  <div id="list" class="list"></div>
+  <div id="empty" class="empty" hidden>Sin resultados con esos filtros.</div>
+</main>
+
+<aside class="drawer" id="drawer" aria-hidden="true">
+  <div class="dw-in">
+    <button class="dw-x" id="dwX" aria-label="Cerrar">✕</button>
+    <div id="dwBody"></div>
+  </div>
+</aside>
+<div class="scrim" id="scrim" hidden></div>
+
+<footer class="pie">
+  <span>Rabat Music Group · Radar de Festivales</span>
+  <span id="footMeta"></span>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

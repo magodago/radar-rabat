@@ -1,0 +1,88 @@
+<!DOCTYPE html><html lang='es'><head><meta charset='utf-8'><style>
+@font-face{font-family:'D';src:url('assets/fuentes/rabat-display.ttf')}
+@font-face{font-family:'M';src:url('assets/fuentes/rabat-mono.ttf')}
+@page{size:A4;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'M',monospace;color:#08080f;background:#efefe4;font-size:9pt}
+.page{width:210mm;height:297mm;padding:18mm 16mm;position:relative;page-break-after:always;overflow:hidden;background:#efefe4}
+.page.dark{background:#08080f;color:#efefe4}
+.foot{position:absolute;left:16mm;right:16mm;bottom:10mm;display:flex;justify-content:space-between;
+  font-size:6.5pt;letter-spacing:.14em;color:#8d8d84;border-top:.3pt solid rgba(0,0,0,.15);padding-top:3mm}
+.dark .foot{border-color:rgba(239,239,228,.25);color:#8d8d84}
+h1{font-family:'D';font-size:52pt;line-height:.88;letter-spacing:-.02em;margin:0 0 6mm}
+h2{font-family:'D';font-size:22pt;line-height:1;margin:0 0 5mm;letter-spacing:-.01em}
+h3{font-family:'D';font-size:13pt;margin:7mm 0 2mm}
+.k{font-size:7pt;letter-spacing:.22em;color:#8d8d84;text-transform:uppercase}
+.rule{height:.4pt;background:currentColor;opacity:.2;margin:4mm 0}
+.blue{color:#3a3aff}.yel{background:#f9ff00;color:#08080f;padding:0 2mm}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:4mm;margin:8mm 0}
+.cell{border:.4pt solid rgba(0,0,0,.18);padding:4mm 4mm}
+.dark .cell{border-color:rgba(239,239,228,.25)}
+.cell .n{font-family:'D';font-size:26pt;line-height:.9}
+.cell .l{font-size:6.5pt;letter-spacing:.16em;color:#8d8d84;margin-top:1.5mm}
+table{width:100%;border-collapse:collapse;font-size:7.5pt}
+th{text-align:left;font-weight:400;font-size:6.5pt;letter-spacing:.14em;color:#8d8d84;border-bottom:.4pt solid rgba(0,0,0,.3);padding:2mm 1mm}
+td{padding:1.8mm 1mm;border-bottom:.3pt solid rgba(0,0,0,.1);vertical-align:top}
+.fest{border:.4pt solid rgba(0,0,0,.18);padding:5mm;margin-bottom:4mm;page-break-inside:avoid}
+.fest .nm{font-family:'D';font-size:15pt;line-height:1.02;margin-bottom:1.5mm}
+.fest .meta{font-size:7pt;color:#4a4a45;margin-bottom:2mm}
+.tag{display:inline-block;font-size:6pt;letter-spacing:.1em;border:.3pt solid rgba(0,0,0,.3);padding:.6mm 1.4mm;margin:0 1mm 1mm 0;text-transform:uppercase}
+.arts{font-size:7.5pt;margin-top:1.5mm}
+.arts b{font-family:'D';font-size:9pt}
+.cover{display:flex;flex-direction:column;justify-content:space-between;height:100%}
+.cover .mid{margin-top:22mm}
+.cover .big{font-family:'D';font-size:70pt;line-height:.85;letter-spacing:-.03em}
+.small{font-size:7.5pt;color:#4a4a45;line-height:1.5}
+.dark .small{color:#8d8d84}
+</style></head><body><div class="page dark">
+<div class="cover">
+  <div>
+    <div class="k">RABAT MUSIC GROUP · LORE</div>
+    <div class="rule" style="margin-top:4mm"></div>
+  </div>
+  <div class="mid">
+    <div class="k" style="color:#8d8d84">Informe de mercado · 17.10.2026</div>
+    <div class="big">RADAR<br>DE<br><span class="blue">FESTIVALES</span></div>
+    <div class="rule" style="margin:8mm 0 5mm"></div>
+    <div class="small" style="max-width:120mm">
+      8 festivales detectados en España. 1 con encaje alto para el roster,
+      2 con encaje medio. Datos actualizados
+      automáticamente cada mañana.
+    </div>
+  </div>
+  <div>
+    <div class="grid" style="margin:0 0 6mm">
+      <div class="cell"><div class="n">8</div><div class="l">FESTIVALES</div></div>
+      <div class="cell"><div class="n">6</div><div class="l">PROVINCIAS</div></div>
+      <div class="cell"><div class="n">1</div><div class="l">ENCAJE ALTO</div></div>
+      <div class="cell"><div class="n">5</div><div class="l">CON CONTACTO</div></div>
+    </div>
+
+  </div>
+</div><div class="foot"><span>RABAT MUSIC GROUP · RADAR DE FESTIVALES</span><span>17.10.2026</span></div></div><div class="page">
+<div class="k">01 · LECTURA DEL MERCADO</div>
+<h2 style="margin-top:3mm">Qué hay ahí fuera</h2>
+<div class="grid">
+  <div class="cell"><div class="n">8</div><div class="l">FESTIVALES ACTIVOS</div></div>
+  <div class="cell"><div class="n">1</div><div class="l">ENCAJE ALTO</div></div>
+  <div class="cell"><div class="n">2</div><div class="l">ENCAJE MEDIO</div></div>
+  <div class="cell"><div class="n">5</div><div class="l">CONTACTO DIRECTO</div></div>
+</div>
+<h3>Por comunidad</h3>
+<table><tr><td>Andalucía</td><td style='text-align:right'>2</td></tr><tr><td>Cataluña</td><td style='text-align:right'>2</td></tr><tr><td>Extremadura</td><td style='text-align:right'>1</td></tr><tr><td>Galicia</td><td style='text-align:right'>1</td></tr><tr><td>Comunidad Valenciana</td><td style='text-align:right'>1</td></tr><tr><td>Castilla-La Mancha</td><td style='text-align:right'>1</td></tr></table>
+<h3>Por mes de celebración</h3>
+<table><tr><td>Enero</td><td style='text-align:right'>0</td></tr><tr><td>Febrero</td><td style='text-align:right'>0</td></tr><tr><td>Marzo</td><td style='text-align:right'>0</td></tr><tr><td>Abril</td><td style='text-align:right'>1</td></tr><tr><td>Mayo</td><td style='text-align:right'>1</td></tr><tr><td>Junio</td><td style='text-align:right'>2</td></tr><tr><td>Julio</td><td style='text-align:right'>0</td></tr><tr><td>Agosto</td><td style='text-align:right'>0</td></tr><tr><td>Septiembre</td><td style='text-align:right'>0</td></tr><tr><td>Octubre</td><td style='text-align:right'>3</td></tr><tr><td>Noviembre</td><td style='text-align:right'>1</td></tr><tr><td>Diciembre</td><td style='text-align:right'>0</td></tr></table>
+<h3>Géneros dominantes</h3>
+<table><tr><td>Pop</td><td style='text-align:right'>2</td></tr><tr><td>Rock</td><td style='text-align:right'>2</td></tr><tr><td>Urbano</td><td style='text-align:right'>1</td></tr><tr><td>Punk</td><td style='text-align:right'>1</td></tr><tr><td>Metal</td><td style='text-align:right'>1</td></tr></table>
+<div class="foot"><span>RABAT MUSIC GROUP · RADAR DE FESTIVALES</span><span>17.10.2026</span></div></div><div class="page"><div class="k">02 · OPORTUNIDADES</div><h2 style="margin-top:3mm">Encaje alto con el roster</h2><div class="fest">
+      <div class="nm">Castañazo Rock 2026</div>
+      <div class="meta">30–31 octubre 2026 · Mercado ganadero · Chantada (Lugo)</div>
+      <div><span class="tag">Urbano</span><span class="tag">Pop</span><span class="tag">Rock</span><span class="tag">Punk</span></div>
+      <div class="arts">Roster: <b>CUPIDO</b>, <b>JUNNIO</b>, <b>CANO</b></div>
+      <div class="small" style="margin-top:1.5mm">Cartel: Grande Amore, Kaotiko, Kumpania Algazarra, Moscow Death Brigade, Tremenda Jauría</div>
+    </div><div class="foot"><span>RABAT MUSIC GROUP · RADAR DE FESTIVALES</span><span>17.10.2026</span></div></div><div class="page">
+<div class="k">03 · ANEXO</div>
+<h2 style="margin-top:3mm">Listado completo (8)</h2>
+<table><thead><tr><th>Festival</th><th>Fechas</th><th>Municipio</th><th>Provincia</th><th>Géneros</th></tr></thead>
+<tbody><tr><td>Jardín Sevilla 2026</td><td>17 octubre 2026</td><td>Sevilla</td><td>Sevilla</td><td></td></tr><tr><td>Horteralia Cáceres 2026</td><td>23–24 octubre 2026</td><td>Cáceres</td><td>Cáceres</td><td>Pop</td></tr><tr><td>Castañazo Rock 2026</td><td>30–31 octubre 2026</td><td>Chantada</td><td>Lugo</td><td>Urbano, Pop</td></tr><tr><td>Metal Bee 2026</td><td>28 noviembre 2026</td><td>Ayora</td><td>Valencia</td><td>Metal</td></tr><tr><td>Viña Rock 2027</td><td>29 abril – 1 mayo 2027</td><td>Villarrobledo</td><td>Albacete</td><td>Rock</td></tr><tr><td>Interestelar Sevilla 2027</td><td>14–15 mayo 2027</td><td>Sevilla</td><td>Sevilla</td><td></td></tr><tr><td>Primavera Sound Barcelona 2027</td><td>3–5 junio 2027</td><td>Barcelona</td><td>Barcelona</td><td></td></tr><tr><td>Sónar 2027</td><td>17–19 junio 2027</td><td>Barcelona</td><td>Barcelona</td><td></td></tr></tbody></table>
+<div class="foot"><span>RABAT MUSIC GROUP · RADAR DE FESTIVALES</span><span>17.10.2026</span></div></div></body></html>
