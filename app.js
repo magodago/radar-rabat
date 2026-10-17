@@ -22,6 +22,7 @@ function init(){
     const w = Date.now() - 7*864e5;
     $('#kNuevo').textContent = rows.filter(r => Date.parse(r.visto || 0) > w).length;
     $('#kContacto').textContent = rows.filter(r => r.email).length;
+    $('#kNuevo').textContent = rows.filter(r => r.web).length;
     $('#footMeta').textContent = 'Actualizado ' + new Date(d.meta.generado).toLocaleString('es-ES');
 
     const provs = [...new Set(rows.map(r => r.provincia).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'es'));
