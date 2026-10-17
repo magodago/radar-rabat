@@ -7,7 +7,7 @@ const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt
 const norm = s => String(s ?? '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 
 function fmtFecha(r){
-  if (r.estado !== 'confirmado') return { d: String((r.anio||2026)+1), m: '' };
+  if (r.estado !== 'confirmado') return { d: String(Math.max((r.anio||2026)+1, new Date().getFullYear()+1)), m: '' };
   const d = new Date(r.inicio + 'T12:00:00');
   if (isNaN(d)) return { d:'--', m:'' };
   return { d: String(d.getDate()).padStart(2,'0'), m: MESES[d.getMonth()].slice(0,3).toUpperCase() + ' ' + r.anio };
