@@ -7,6 +7,7 @@ const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt
 const norm = s => String(s ?? '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 
 function fmtFecha(r){
+  if (r.estado !== 'confirmado') return { d: String((r.anio||2026)+1), m: 'POR CONFIRMAR' };
   const d = new Date(r.inicio + 'T12:00:00');
   if (isNaN(d)) return { d:'--', m:'' };
   return { d: String(d.getDate()).padStart(2,'0'), m: MESES[d.getMonth()].slice(0,3).toUpperCase() + ' ' + r.anio };
@@ -14,7 +15,11 @@ function fmtFecha(r){
 
 function init(){
   fetch(location.search.indexOf('muestra') >= 0 ? 'data/muestra.json' : 'data/festivals.json').then(r => r.json()).then(d => {
-    DATA = d; rows = d.festivales || [];
+    DATA = d; rows = (d.festivales || []).slice().sort((a,b)=>{
+      const ca = a.estado==='confirmado'?0:1, cb = b.estado==='confirmado'?0:1;
+      if (ca !== cb) return ca-cb;
+      return a.inicio < b.inicio ? -1 : 1;
+    });
     $('#upd').textContent = 'ACT. ' + new Date(d.meta.generado).toLocaleDateString('es-ES',{day:'2-digit',month:'short',year:'numeric'});
     $('#kTotal').textContent = d.meta.total;
     $('#kProv').textContent = d.meta.provincias;
