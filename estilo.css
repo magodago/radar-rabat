@@ -2,7 +2,7 @@
 @font-face{font-family:'RB Mono';src:url('assets/fuentes/rabat-mono.ttf') format('truetype');font-display:swap}
 :root{
   --ink:#08080f; --ink2:#0d0d16; --line:rgba(239,239,228,.14); --line2:rgba(239,239,228,.08);
-  --bone:#efefe4; --mut:#8d8d84; --mut2:#4a4a45; --blue:#3a3aff; --yel:#f9ff00;
+  --bone:#efefe4; --mut:#8d8d84; --mut2:#4a4a45; --blue:#1F4FE8; --yel:#f9ff00;
   --display:'RB Display',Impact,sans-serif; --mono:'RB Mono',ui-monospace,monospace;
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -24,8 +24,8 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:100;op
 .btn{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;padding:9px 13px;border:1px solid var(--line);
   background:transparent;color:var(--bone);cursor:pointer;transition:.18s;white-space:nowrap}
 .btn:hover{border-color:var(--bone)}
-.btn.solid{background:var(--yel);color:var(--ink);border-color:var(--yel);font-weight:700}
-.btn.solid:hover{background:var(--bone);border-color:var(--bone)}
+.btn.solid{background:var(--blue);color:#fff;border-color:var(--blue);font-weight:700}
+.btn.solid:hover{background:#3C6BFF;border-color:#3C6BFF}
 
 .kpis{display:grid;grid-template-columns:repeat(5,1fr);border-bottom:1px solid var(--line)}
 .kpi{padding:22px clamp(14px,2vw,26px);border-right:1px solid var(--line2)}
@@ -129,3 +129,6 @@ main{padding:0 clamp(16px,4vw,48px) 60px}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 
 .pend{display:inline-block;margin-left:8px;font-family:'RB Mono',monospace;font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:#8d8d84;border:1px solid rgba(141,141,132,.4);padding:2px 6px;border-radius:2px;vertical-align:middle}
+
+.logo{filter:drop-shadow(0 0 22px rgba(31,79,232,.38))}
+@media(max-width:640px){.logo{filter:drop-shadow(0 0 12px rgba(31,79,232,.45))}}

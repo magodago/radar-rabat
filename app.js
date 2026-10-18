@@ -1,6 +1,6 @@
 const hostOf = u => { try { return new URL(u).hostname.replace('www.',''); } catch(e){ return u; } };
 const MESES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
-let DATA = null, rows = [], gens = new Set(), state = { q:'', prov:'', mes:'', ord:'fecha', alto:false };
+let DATA = null, rows = [], gens = new Set(), state = { q:'', prov:'', mes:'', ord:'fecha', alto:false, conf:false };
 
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -46,6 +46,7 @@ function filtered(){
   const q = norm(state.q);
   let out = rows.filter(r => {
     if (state.alto && r.encaje !== 'alto') return false;
+    if (state.conf && r.estado !== 'confirmado') return false;
     if (state.prov && r.provincia !== state.prov) return false;
     if (state.mes && Number(state.mes) !== r.mes) return false;
     if (gens.size && !(r.generos_es||[]).some(g => gens.has(g))) return false;
@@ -152,6 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
   $('#mes').addEventListener('change', e => { state.mes = e.target.value; render(); });
   $('#ord').addEventListener('change', e => { state.ord = e.target.value; render(); });
   $('#soloAlto').addEventListener('change', e => { state.alto = e.target.checked; render(); });
+  $('#soloConf').addEventListener('change', e => { state.conf = e.target.checked; render(); });
   $('#gens').addEventListener('click', e => {
     const b = e.target.closest('.g'); if (!b) return;
     const g = b.dataset.g;
