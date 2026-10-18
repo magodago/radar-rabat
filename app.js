@@ -26,7 +26,7 @@ function init(){
     $('#kAlto').textContent = rows.filter(r => r.encaje === 'alto').length;
     const w = Date.now() - 7*864e5;
     $('#kNuevo').textContent = rows.filter(r => Date.parse(r.visto || 0) > w).length;
-    $('#kContacto').textContent = rows.filter(r => r.email).length;
+    $('#kContacto').textContent = rows.filter(r => r.email || r.email_ayto).length;
     $('#kNuevo').textContent = rows.filter(r => r.web).length;
     $('#footMeta').textContent = 'Actualizado ' + new Date(d.meta.generado).toLocaleString('es-ES');
 
@@ -112,6 +112,8 @@ function drawer(i){
     ${r.email?`<div class="dw-line"><a href="mailto:${esc(r.email)}">${esc(r.email)}</a></div>`:`<div class="dw-line dim">Sin email público · usa la web o el pitch</div>`}
     ${(r.emails||[]).length>1?`<div class="dw-line dim">${esc(r.emails.slice(1).join(' · '))}</div>`:''}
     ${r.promotor?`<div class="dw-line">Promotor / organiza: <b>${esc(r.promotor)}</b></div>`:''}
+    ${r.email_ayto?`<div class="dw-line">Ayuntamiento: <a href="mailto:${esc(r.email_ayto)}">${esc(r.email_ayto)}</a>${r.tel_ayto?` · ${esc(r.tel_ayto)}`:''}</div>`:''}
+    ${r.web_ayto?`<div class="dw-line dim">Ayto. web: <a href="${esc(r.web_ayto)}" target="_blank" rel="noopener">${esc(hostOf(r.web_ayto))}</a></div>`:''}
     ${r.web?`<div class="dw-line dim">Web: <a href="${esc(r.web)}" target="_blank" rel="noopener">${esc(hostOf(r.web))}</a></div>`:''}
     <div class="dw-acts">
       <button class="primary" id="dwPitch">COPIAR PITCH</button>
