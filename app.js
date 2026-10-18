@@ -7,7 +7,7 @@ const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt
 const norm = s => String(s ?? '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 
 function fmtFecha(r){
-  if (r.estado !== 'confirmado') return { d: String(Math.max((r.anio||2026)+1, new Date().getFullYear()+1)), m: '' };
+  if (r.estado !== 'confirmado') return { d: String(Math.max(r.anio||0, new Date().getFullYear()+1)), m: '' };
   const d = new Date(r.inicio + 'T12:00:00');
   if (isNaN(d)) return { d:'--', m:'' };
   return { d: String(d.getDate()).padStart(2,'0'), m: MESES[d.getMonth()].slice(0,3).toUpperCase() + ' ' + r.anio };
@@ -58,7 +58,10 @@ function filtered(){
   });
   if (state.ord === 'nombre') out.sort((a,b)=>a.nombre.localeCompare(b.nombre,'es'));
   else if (state.ord === 'encaje') out.sort((a,b)=> (a.encaje==='alto'?-2:a.encaje==='medio'?-1:0) - (b.encaje==='alto'?-2:b.encaje==='medio'?-1:0) || (a.inicio||'').localeCompare(b.inicio||''));
-  else out.sort((a,b)=> (a.inicio||'9999').localeCompare(b.inicio||'9999'));
+  else out.sort((a,b)=> ((a.estado==='confirmado')?0:1) - ((b.estado==='confirmado')?0:1)
+      || (a.inicio||'9999').localeCompare(b.inicio||'9999')
+      || (a.anio||9999) - (b.anio||9999)
+      || a.nombre.localeCompare(b.nombre,'es'));
   return out;
 }
 
