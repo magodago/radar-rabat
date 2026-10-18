@@ -132,3 +132,23 @@ main{padding:0 clamp(16px,4vw,48px) 60px}
 
 .logo{filter:drop-shadow(0 0 22px rgba(31,79,232,.38))}
 @media(max-width:640px){.logo{filter:drop-shadow(0 0 12px rgba(31,79,232,.45))}}
+html,body{overflow-x:hidden;max-width:100%}
+@media(max-width:560px){
+  .top{padding:14px;gap:10px}
+  .top-r{flex-wrap:wrap;width:100%;gap:6px;justify-content:flex-start}
+  .top-r .btn{padding:8px 9px;font-size:10.5px;letter-spacing:.04em}
+  .tag{font-size:9.5px;padding:4px 7px}
+  .row{grid-template-columns:58px 1fr 16px}
+  .filters{flex-wrap:wrap;gap:8px}
+  .filters select,.filters input{max-width:100%}
+}
+@media(max-width:560px){
+  .brand{max-width:100%;align-items:flex-start;gap:6px;flex-direction:column}
+  .brand .logo{width:48vw;max-width:200px;height:auto}
+  .brand .tag{font-size:9px}
+  .kpi .n{font-size:30px}
+  .kpis{grid-template-columns:1fr 1fr}
+  .filters{gap:6px}
+  .filters input[type=search]{width:100%}
+  .filters select{flex:1 1 44%}
+}
