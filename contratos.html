@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contratos de ayuntamientos · Radar Rabat</title>
+<link rel="stylesheet" href="estilo.css">
+<style>
+.wrap{max-width:1080px;margin:0 auto;padding:32px 20px 80px}
+h1{font-size:clamp(26px,4vw,40px);margin:18px 0 6px}
+.sub{color:#9aa0ab;margin:0 0 26px;font-size:15px}
+.tot{display:flex;gap:26px;margin:0 0 22px;flex-wrap:wrap}
+.tot b{font-size:26px;display:block}
+.tot span{color:#9aa0ab;font-size:12px;text-transform:uppercase;letter-spacing:.08em}
+.row{border-top:1px solid #23262e;padding:16px 2px;display:grid;grid-template-columns:1fr 150px 120px;gap:14px;align-items:start}
+.row:last-child{border-bottom:1px solid #23262e}
+.t{font-size:15px;line-height:1.35;margin:0 0 6px}
+.o{font-size:12.5px;color:#9aa0ab}
+.i{font-variant-numeric:tabular-nums;color:#ff9f43;font-weight:600;text-align:right}
+.u a{font-size:12px;color:#3d9bff;text-decoration:none}
+.tag{display:inline-block;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;border:1px solid #3a3f4b;border-radius:4px;padding:2px 6px;margin-left:8px;color:#cdd3dd}
+@media(max-width:720px){.row{grid-template-columns:1fr}.i{text-align:left}.u{text-align:left}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a href="./" style="color:#3d9bff;text-decoration:none;font-size:13px">← Radar de festivales</a>
+  <h1>Contratos musicales de ayuntamientos</h1>
+  <p class="sub">Contratos menores publicados por administraciones locales: conciertos, bandas, orquestas y fiestas. Datos abiertos del sector público.</p>
+  <div class="tot">
+    <div><b id="t1">—</b><span>contratos</span></div>
+    <div><b id="t2">—</b><span>importe total</span></div>
+    <div><b id="t3">—</b><span>organismos</span></div>
+  </div>
+  <div id="list"><p class="sub">Cargando…</p></div>
+</div>
+<script src="contratos.js"></script>
+</body>
+</html>
