@@ -1,13 +1,13 @@
 const hostOf = u => { try { return new URL(u).hostname.replace('www.',''); } catch(e){ return u; } };
 const MESES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
-let DATA = null, rows = [], gens = new Set(), state = { q:'', prov:'', mes:'', ord:'fecha', alto:false, conf:false };
+let DATA = null, rows = [], gens = new Set(), state = { q:'', prov:'', mes:'', ord:'fecha', alto:false };
 
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const norm = s => String(s ?? '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 
 function fmtFecha(r){
-  if (r.estado !== 'confirmado') return { d: String(Math.max(r.anio||0, new Date().getFullYear()+1)), m: '' };
+  if (r.estado !== 'confirmado') return { d: String(Math.max((r.anio||2026)+1, new Date().getFullYear()+1)), m: '' };
   const d = new Date(r.inicio + 'T12:00:00');
   if (isNaN(d)) return { d:'--', m:'' };
   return { d: String(d.getDate()).padStart(2,'0'), m: MESES[d.getMonth()].slice(0,3).toUpperCase() + ' ' + r.anio };
@@ -46,7 +46,6 @@ function filtered(){
   const q = norm(state.q);
   let out = rows.filter(r => {
     if (state.alto && r.encaje !== 'alto') return false;
-    if (state.conf && r.estado !== 'confirmado') return false;
     if (state.prov && r.provincia !== state.prov) return false;
     if (state.mes && Number(state.mes) !== r.mes) return false;
     if (gens.size && !(r.generos_es||[]).some(g => gens.has(g))) return false;
@@ -58,10 +57,7 @@ function filtered(){
   });
   if (state.ord === 'nombre') out.sort((a,b)=>a.nombre.localeCompare(b.nombre,'es'));
   else if (state.ord === 'encaje') out.sort((a,b)=> (a.encaje==='alto'?-2:a.encaje==='medio'?-1:0) - (b.encaje==='alto'?-2:b.encaje==='medio'?-1:0) || (a.inicio||'').localeCompare(b.inicio||''));
-  else out.sort((a,b)=> ((a.estado==='confirmado')?0:1) - ((b.estado==='confirmado')?0:1)
-      || (a.inicio||'9999').localeCompare(b.inicio||'9999')
-      || (a.anio||9999) - (b.anio||9999)
-      || a.nombre.localeCompare(b.nombre,'es'));
+  else out.sort((a,b)=> (a.inicio||'9999').localeCompare(b.inicio||'9999'));
   return out;
 }
 
@@ -156,7 +152,6 @@ document.addEventListener('DOMContentLoaded', () => {
   $('#mes').addEventListener('change', e => { state.mes = e.target.value; render(); });
   $('#ord').addEventListener('change', e => { state.ord = e.target.value; render(); });
   $('#soloAlto').addEventListener('change', e => { state.alto = e.target.checked; render(); });
-  $('#soloConf').addEventListener('change', e => { state.conf = e.target.checked; render(); });
   $('#gens').addEventListener('click', e => {
     const b = e.target.closest('.g'); if (!b) return;
     const g = b.dataset.g;
